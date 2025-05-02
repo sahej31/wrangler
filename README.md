@@ -164,6 +164,22 @@ These directives are currently available:
 | [JSON](wrangler-docs/functions/json-functions.md)                               | Functions that can be useful in transforming your data           |
 | [Types](wrangler-docs/functions/type-functions.md)                              | Functions for detecting the type of data                         |
 
+# Wrangler Enhancement: ByteSize and TimeDuration
+
+## New Features
+- Supports `BYTE_SIZE` and `TIME_DURATION` tokens in grammar.
+- `aggregate-stats` directive calculates total size (MB) and total time (sec) from input columns.
+
+## Usage Example
+```text
+aggregate-stats :data_transfer_size :response_time :total_size_mb :total_time_sec
+```
+
+## Build
+```bash
+mvn clean install -Drat.skip=true
+```
+
 ## Performance
 
 Initial performance tests show that with a set of directives of high complexity for
