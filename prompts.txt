@@ -1,0 +1,5 @@
+Prompt: Help me modify Wrangler to support BYTE_SIZE and TIME_DURATION tokens.
+Prompt: Generate ByteSize and TimeDuration Java classes with parsing logic.
+Prompt: Create AggregateStats directive that sums size and time.
+Prompt: Write unit tests using TestingRig.
+
