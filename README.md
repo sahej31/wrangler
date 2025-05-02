@@ -20,6 +20,45 @@ are manually created.
 
 ## New Features
 
+## 📦 Byte Size and Time Duration Enhancements
+
+This version of Wrangler adds native support for parsing and aggregating values with byte size and time duration units in transformation recipes.
+
+### New Tokens Added:
+- `BYTE_SIZE` — supports units like `KB`, `MB`, `GB`, `B` (e.g., `"10KB"`, `"1.5MB"`)
+- `TIME_DURATION` — supports units like `ms`, `s`, `min`, `h` (e.g., `"500ms"`, `"2s"`)
+
+These can now be parsed directly as directive arguments using the built-in tokenizer.
+
+### 🧮 New Directive: `aggregate-stats`
+
+This directive allows users to aggregate byte size and time duration values across all rows and output totals (or averages).
+
+**Usage:**
+```wrangler
+aggregate-stats :data_transfer_size :response_time :total_size_mb :total_time_sec
+```
+
+**Inputs:**
+- `:data_transfer_size` → column with values like `"10KB"`, `"1.2MB"`, etc.
+- `:response_time` → column with values like `"500ms"`, `"2s"`, etc.
+
+**Outputs:**
+- `:total_size_mb` → total of all sizes converted to Megabytes
+- `:total_time_sec` → total of all durations converted to seconds
+
+**Supported Units:**
+- Size: `B`, `KB`, `MB`, `GB`
+- Time: `ms`, `s`, `min`, `h`
+
+**Tested Example:**
+```java
+String[] recipe = {
+  "aggregate-stats :data_transfer_size :response_time :total_size_mb :total_time_sec"
+};
+```
+
+
 More [here](wrangler-docs/upcoming-features.md) on upcoming features.
 
   * **User Defined Directives, also known as UDD**, allow you to create custom functions to transform records within CDAP DataPrep or a.k.a Wrangler. CDAP comes with a comprehensive library of functions. There are however some omissions, and some specific cases for which UDDs are the solution. Additional information on how you can build your custom directives [here](wrangler-docs/custom-directive.md).
@@ -163,22 +202,6 @@ These directives are currently available:
 | [DDL](wrangler-docs/functions/ddl-functions.md)                                 | Functions that can manipulate definition of data                 |
 | [JSON](wrangler-docs/functions/json-functions.md)                               | Functions that can be useful in transforming your data           |
 | [Types](wrangler-docs/functions/type-functions.md)                              | Functions for detecting the type of data                         |
-
-# Wrangler Enhancement: ByteSize and TimeDuration
-
-## New Features
-- Supports `BYTE_SIZE` and `TIME_DURATION` tokens in grammar.
-- `aggregate-stats` directive calculates total size (MB) and total time (sec) from input columns.
-
-## Usage Example
-```text
-aggregate-stats :data_transfer_size :response_time :total_size_mb :total_time_sec
-```
-
-## Build
-```bash
-mvn clean install -Drat.skip=true
-```
 
 ## Performance
 

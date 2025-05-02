@@ -1,5 +1,13 @@
-Prompt: Help me modify Wrangler to support BYTE_SIZE and TIME_DURATION tokens.
-Prompt: Generate ByteSize and TimeDuration Java classes with parsing logic.
-Prompt: Create AggregateStats directive that sums size and time.
-Prompt: Write unit tests using TestingRig.
 
+Prompts used during the implementation of BYTE_SIZE and TIME_DURATION enhancements:
+
+1. "How to add new lexer tokens BYTE_SIZE and TIME_DURATION in ANTLR grammar (Directives.g4)?"
+2. "Generate ByteSize.java and TimeDuration.java classes that parse size and time unit strings and return values in bytes/milliseconds."
+3. "How to extend TokenType.java and TokenDefinition.java to support new custom types?"
+4. "Write a directive AggregateStats.java in wrangler-core that aggregates size and time values from all rows and returns totals."
+5. "Create unit tests using TestingRig for AggregateStats, ByteSize, and TimeDuration."
+6. "How to implement ExecutorContext storage in custom aggregate directive?"
+7. "What is the correct build command to skip Apache RAT in Maven? (Answer: mvn clean install -Drat.skip=true)"
+8. "Generate README section explaining how to use the aggregate-stats directive and new BYTE_SIZE/TIME_DURATION tokens."
+9. "Help me fix Java not recognized, setup Maven and JDK on Windows, add to PATH."
+10. "Create final ZIP with Maven-ready wrangler fork for GitHub upload, preserving original project structure."
